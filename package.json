@@ -1,0 +1,69 @@
+{
+  "name": "angular-c9",
+  "version": "1.0.0",
+  "description": "Angular application development skeleton with TypeScript, Jasmine, Karma and Protractor at c9.io",
+  "main": "index.ts",
+  "scripts": {
+    "rollup:ng2": "node_modules/.bin/rollup -c angular-imports.rollup.config.js -w",
+    "compile:debug": "node_modules/.bin/tsc -p tsconfig.debug.json",
+    "test:jasmine": "node_modules/.bin/jasmine-ts './spec/unit/**/*.spec.ts'",
+    "test:karma": "node_modules/.bin/karma start --no-browsers karma.config.js",
+    "build:merge-startup-libs:min": "node_modules/.bin/concat-cli -f node_modules/core-js/client/shim.min.js node_modules/zone.js/dist/zone.min.js node_modules/systemjs/dist/system.js node_modules/rxjs/bundles/Rx.min.js -o dist/startup.libs.min.js",
+    "build:merge-angular-libs:min": "node_modules/.bin/concat-cli -f node_modules/@angular/core/bundles/core.umd.min.js node_modules/@angular/common/bundles/common.umd.min.js node_modules/@angular/compiler/bundles/compiler.umd.min.js node_modules/@angular/platform-browser/bundles/platform-browser.umd.min.js node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js node_modules/@angular/http/bundles/http.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js -o dist/angular.libs.min.js",
+    "test": "npm run test:jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakilsiraj/angular-c9.git"
+  },
+  "keywords": [
+    "Angular",
+    "TypeScript",
+    "Jasmine",
+    "Karma",
+    "Protractor",
+    "AOT"
+  ],
+  "author": "Shakil Siraj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shakilsiraj/angular-c9/issues"
+  },
+  "homepage": "https://github.com/shakilsiraj/angular-c9#readme",
+  "dependencies": {
+    "@angular/common": "^2.4.0",
+    "@angular/compiler": "^2.4.0",
+    "@angular/core": "^2.4.0",
+    "@angular/forms": "^2.4.0",
+    "@angular/http": "^2.4.0",
+    "@angular/platform-browser": "^2.4.0",
+    "@angular/platform-browser-dynamic": "^2.4.0",
+    "@angular/platform-webworker": "^2.4.0",
+    "@angular/router": "^3.4.0",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.1.0",
+    "systemjs": "^0.19.47",
+    "zone.js": "^0.7.6"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^2.4.0",
+    "@types/jasmine": "^2.5.46",
+    "concat-cli": "^4.0.0",
+    "jasmine-core": "^2.5.2",
+    "jasmine-spec-reporter": "^3.2.0",
+    "jasmine-ts": "^0.1.0",
+    "karma": "^1.5.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-spec-reporter": "0.0.30",
+    "karma-typescript": "^2.1.7",
+    "rollup": "^0.41.6",
+    "rollup-plugin-angular": "^0.4.4",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^3.2.2",
+    "typescript": "^2.2.2",
+    "typings": "^2.1.0"
+  }
+}
