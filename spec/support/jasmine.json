@@ -1,4 +1,9 @@
 {
+  "spec_dir": "spec/unit",
+  "spec_files": [
+    "jasmine.startup.js",
+        "**/*.spec.ts"
+    ],
   "reporters": [
     {
       "name": "jasmine-spec-reporter#SpecReporter",

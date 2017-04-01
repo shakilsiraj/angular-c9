@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es5",
         "moduleResolution": "node",
-        "inlineSourceMap": true,
+        "sourceMap": true,
         "module": "commonjs",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,

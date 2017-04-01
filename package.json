@@ -6,11 +6,11 @@
   "scripts": {
     "rollup:ng2": "node_modules/.bin/rollup -c angular-imports.rollup.config.js -w",
     "compile:debug": "node_modules/.bin/tsc -p tsconfig.debug.json",
-    "test:jasmine": "node_modules/.bin/jasmine-ts './spec/unit/**/*.spec.ts'",
+    "test:jasmine": "node_modules/.bin/jasmine-ts",
     "test:karma": "node_modules/.bin/karma start --no-browsers karma.config.js",
     "build:merge-startup-libs:min": "node_modules/.bin/concat-cli -f node_modules/core-js/client/shim.min.js node_modules/zone.js/dist/zone.min.js node_modules/systemjs/dist/system.js node_modules/rxjs/bundles/Rx.min.js -o dist/startup.libs.min.js",
     "build:merge-angular-libs:min": "node_modules/.bin/concat-cli -f node_modules/@angular/core/bundles/core.umd.min.js node_modules/@angular/common/bundles/common.umd.min.js node_modules/@angular/compiler/bundles/compiler.umd.min.js node_modules/@angular/platform-browser/bundles/platform-browser.umd.min.js node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js node_modules/@angular/http/bundles/http.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js -o dist/angular.libs.min.js",
-    "test": "npm run test:jasmine"
+    "test": "npm run test:karma"
   },
   "repository": {
     "type": "git",
@@ -43,10 +43,11 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
     "systemjs": "^0.19.47",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.8.5"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.4.0",
+    "@types/core-js": "^0.9.40",
     "@types/jasmine": "^2.5.46",
     "concat-cli": "^4.0.0",
     "jasmine-core": "^2.5.2",
@@ -54,8 +55,10 @@
     "jasmine-ts": "^0.1.0",
     "karma": "^1.5.0",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-spec-reporter": "0.0.30",
     "karma-typescript": "^2.1.7",
+    "karma-typescript-angular2-transform": "^1.0.0-beta.6",
     "rollup": "^0.41.6",
     "rollup-plugin-angular": "^0.4.4",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -63,7 +66,7 @@
     "rollup-plugin-typescript": "^0.8.1",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^3.2.2",
-    "typescript": "^2.2.2",
+    "typescript": "^2.1.6",
     "typings": "^2.1.0"
   }
 }
