@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './spec',
+    basePath: '',
 
 
     // frameworks to use
@@ -16,10 +16,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {
-        pattern: "./support/karma.setup.ts"
+        pattern: "spec/support/karma.setup.ts"
         },
       {
-        pattern: "./unit/**/*.+(ts|html|css)"
+        pattern: "spec/unit/**/*.+(ts|html|css)"
       }
     ],
 
@@ -39,14 +39,11 @@ module.exports = function(config) {
 
     karmaTypescriptConfig: {
       bundlerOptions: {
-        entrypoints: /\.spec\.ts$/,
-        transforms: [
-                    require("karma-typescript-angular2-transform")
-                ]
+        transforms: [require("karma-typescript-es6-transform")()]
       },
-      tsconfig: "../tsconfig.karma.json",
+      tsconfig: "tsconfig.karma.json",
       coverageOptions: {
-        instrumentation: true
+        instrumentation: false // set to false to see the original Typescript code when debugging
       }
     },
 
