@@ -16,18 +16,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {
-        pattern: "spec/support/karma.setup.ts"
-        },
+        pattern: "spec/support/testbed.setup.ts"
+      },
+      {
+        pattern: "source/**/*.+(ts|html|css)"
+      },
       {
         pattern: "spec/unit/**/*.+(ts|html|css)"
       }
     ],
 
-    mime: {
-      'text/x-typescript': ['ts', 'tsx']
-    },
     // list of files to exclude
     exclude: [
+      "source/main.browser.ts" //don't bootstrap another application module with Karma
     ],
 
 
@@ -51,7 +52,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     // reporters: ['progress'],
-    reporters: ['spec', 'kjhtml'],
+    reporters: ['spec', 'kjhtml', 'karma-typescript'],
     specReporter: {
       maxLogLines: 5, // limit number of lines logged per test 
       suppressErrorSummary: false, // do not print error summary 

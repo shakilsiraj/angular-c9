@@ -1,8 +1,11 @@
 {
-  "spec_dir": "spec/unit",
+  "spec_dir": "jasmine",
   "spec_files": [
-    "jasmine.startup.js",
-        "**/*.spec.ts"
+        "**/*.spec.js"
+    ],
+  "helpers": [
+      "spec/support/testbed.setup.js",
+      "spec/support/jasmine.helper.js"
     ],
   "reporters": [
     {
