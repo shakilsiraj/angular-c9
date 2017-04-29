@@ -28,6 +28,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      "source/index.html", //let's not have un-necessary 404s
       "source/main.browser.ts" //don't bootstrap another application module with Karma
     ],
 
