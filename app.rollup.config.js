@@ -16,7 +16,7 @@ export default {
     /**
      * the entry point where all the linrary includes are listed
      */
-    entry: 'source/tour_of_heros/main.ts',
+    entry: 'source/main.browser.ts',
     /**
      *  merged outputfile
      */

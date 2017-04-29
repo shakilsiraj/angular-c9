@@ -4,16 +4,17 @@
   "description": "Angular application development skeleton with TypeScript, Jasmine, Karma and Protractor at c9.io",
   "main": "index.ts",
   "scripts": {
-    "rollup:ng2": "node_modules/.bin/rollup -c angular-imports.rollup.config.js -w",
+    "rollup:ng2": "node_modules/.bin/rollup -c angular-imports.rollup.config.js",
     "rollup:app": "node_modules/.bin/rollup -c app.rollup.config.js",
     "compile:debug": "node_modules/.bin/tsc -p tsconfig.debug",
     "test": "node_modules/.bin/trash jasmine && npm run compile:jasmine && npm run test:jasmine",
     "test:jasmine": "node_modules/.bin/jasmine-ts",
     "compile:jasmine": "node_modules/.bin/tsc -p tsconfig.jasmine.json",
     "test:karma": "node_modules/.bin/karma start --no-browsers karma.config.js",
-    "build:merge-startup-libs:min": "node_modules/.bin/concat-cli -f node_modules/core-js/client/shim.min.js node_modules/zone.js/dist/zone.min.js node_modules/systemjs/dist/system.js node_modules/rxjs/bundles/Rx.min.js -o dist/startup.libs.min.js",
-    "build:merge-angular-libs:min": "node_modules/.bin/concat-cli -f node_modules/@angular/core/bundles/core.umd.min.js node_modules/@angular/common/bundles/common.umd.min.js node_modules/@angular/compiler/bundles/compiler.umd.min.js node_modules/@angular/platform-browser/bundles/platform-browser.umd.min.js node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js node_modules/@angular/http/bundles/http.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js node_modules/@angular/router/bundles/router.umd.min.js -o dist/angular.libs.min.js",
-    "~test": "npm run test:karma"
+    "build:merge-startup-libs:min": "node_modules/.bin/uglifyjs node_modules/core-js/client/shim.min.js node_modules/zone.js/dist/zone.min.js node_modules/systemjs/dist/system.js node_modules/rxjs/bundles/Rx.min.js -o dist/startup.libs.min.js",
+    "build:app": "npm run rollup:ng2 && npm run rollup:app && npm run build:merge-startup-libs:min",
+    "copy:statics": "node_modules/.bin/cpx 'source/*.{html,htm,png,jpg,gif,css,ico}' dist",
+    "dist": "node_modules/.bin/trash dist && npm run build:app && npm run copy:statics"
   },
   "repository": {
     "type": "git",
@@ -53,8 +54,9 @@
     "@angular/compiler-cli": "^2.4.0",
     "@types/core-js": "^0.9.40",
     "@types/jasmine": "^2.5.46",
-    "concat-cli": "^4.0.0",
+    "cpx": "^1.5.0",
     "jasmine-core": "^2.5.2",
+    "jasmine-node": "^1.14.5",
     "jasmine-spec-reporter": "^3.2.0",
     "jasmine-ts": "^0.1.0",
     "jsdom": "^9.12.0",
@@ -65,6 +67,7 @@
     "karma-typescript": "^2.1.7",
     "karma-typescript-angular2-transform": "^1.0.0-beta.6",
     "karma-typescript-es6-transform": "^1.0.0",
+    "lite-server": "^2.3.0",
     "rollup": "^0.41.6",
     "rollup-plugin-angular": "^0.4.4",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -74,6 +77,7 @@
     "rollup-watch": "^3.2.2",
     "trash-cli": "^1.4.0",
     "typescript": "^2.1.6",
-    "typings": "^2.1.0"
+    "typings": "^2.1.0",
+    "uglifyjs": "^2.4.10"
   }
 }
